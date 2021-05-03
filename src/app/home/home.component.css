@@ -1,0 +1,71 @@
+h4 {
+  line-height: 1.25;
+  color: #10596b;
+  margin: 0;
+  padding: 0;
+  font-weight: 900;
+  font-family: 'Montserrat', serif;
+  font-size: 46px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+h3 {
+  line-height: 1.66;
+  color: #10596b;
+  margin: 0;
+  padding: 0;
+  font-weight: 900;
+  font-family: 'Montserrat', serif;
+  font-size: 28px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+h2 {
+  line-height: 1.66;
+  margin: 0;
+  padding: 0;
+  font-weight: 900;
+  color: #10596b;
+  font-family: 'Montserrat', serif;
+  font-size: 18px;
+
+  text-align: center;
+  margin-bottom: 40px; }
+
+.generate-here {
+  line-height: 1.66;
+  margin: 0;
+  padding: 0;
+  font-weight: 900;
+  color: #10596b;
+  font-family: 'Montserrat', serif;
+  font-size: 28px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.loginhere {
+  line-height: 1.66;
+  margin: 0;
+  padding: 0;
+  font-weight: 900;
+  color: #10596b;
+  font-family: 'Montserrat', serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  left: 450px;
+}

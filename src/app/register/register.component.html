@@ -1,0 +1,67 @@
+<div class="main">
+  <section class="signup">
+    <div class="container">
+      <div class="signup-content">
+        <form *ngIf="!isSuccessful" name="form"
+              (ngSubmit)="f.form.valid && onSubmit()" #f='ngForm' novalidate id="signup-form" class="signup-form">
+          <h3 class="form-title">Sign up now to use our<br/> Password Manager </h3>
+          <h2 class="form title">Create Account</h2>
+          <div class="form-group">
+            <input type="text" class="form-input" name="username" [(ngModel)]="form.username" required
+                   minlength="3" maxlength="20" #username='ngModel' placeholder="Your Username"/>
+            <div class="alert-danger" *ngIf="username.errors && f.submitted">
+              <div *ngIf="username.errors.required">Username is Required</div>
+              <div *ngIf="username.errors.minlength">Username must be at least 3 characters</div>
+              <div *ngIf="username.errors.maxlength">Username must be at most 20 characters</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-input" name="email" [(ngModel)]="form.email" required email
+                   #email='ngModel' placeholder="Your Email"/>
+            <div class="alert-danger" *ngIf="email.errors && f.submitted">
+              <div *ngIf="email.errors.required" >Email is required</div>
+              <div *ngIf="email.errors.email">Email must be a valid email address</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-input" name="password" [(ngModel)]="form.password" required
+                   minlength="6" #password="ngModel" placeholder="Password"/>
+            <div class="alert-danger" *ngIf="password.errors && f.submitted">
+              <div *ngIf="password.errors.required">Password is required</div>
+              <div *ngIf="password.errors.minlength"> Password must be at least 6 characters
+              </div>
+            </div>
+            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+          </div>
+          <div class="form-group">
+            <input type="submit" name="submit" id="submit" class="form-submit" value="Sign up"/>
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+              Signup failed!<br />{{ errorMessage }} </div>
+          </div>
+
+          <p class="loginhere">
+            Have already an account? <a class="loginhere-link" routerLink="/login">Login here</a>
+          </p>
+        </form>
+
+        <div class="signup-content" *ngIf="isSuccessful">
+          <h2>Account created</h2>
+          <div class="alert alert-success">
+            Your registration is successful!
+          </div>
+          <p class="loginhere">
+            Please
+            <a class="loginhere-link" routerLink="/login">Login</a>
+            to continue with your account
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+
+
