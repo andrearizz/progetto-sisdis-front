@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.username = user.username;
     }
+
     $('#menu-toggle').on('click',
       (e) => (e.preventDefault(),
         $('#wrapper').toggleClass('toggled')));

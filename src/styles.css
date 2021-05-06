@@ -1,7 +1,8 @@
 /* @extend display-flex; */
 display-flex, .display-flex, .display-flex-center {
   display: flex;
-  display: -webkit-flex; }
+  display: -webkit-flex;
+}
 
 /* @extend list-type-ulli; */
 list-type-ulli {
