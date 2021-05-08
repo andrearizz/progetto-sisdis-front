@@ -1,0 +1,21 @@
+
+<div class="main">
+ <section>
+   <div class="container">
+     <div class="generator-content">
+       <h1 class="form-title">Your secure password is:</h1>
+       <div class="form-group">
+         <h2>{{password}}</h2>
+         <h3>Length: {{length}}</h3>
+         <input type="range" [defaultValue]="length" min="6" max="40" class="slider" (input)="onChangelenght($event)">
+         <tr *ngFor="let item of constrains">
+           <input type="checkbox" [(ngModel)]="item.value" (ngModelChange)="onChangeConstraints($event)">
+           {{item.label}}
+         </tr>
+       </div>
+     </div>
+   </div>
+ </section>
+
+</div>
+
