@@ -11,6 +11,8 @@ import {authInterceptorProviders} from './_helpers/auth.interceptor';
 import { HomeComponent } from './home/home.component';
 import { GeneratorComponent } from './generator/generator.component';
 import { CredentialsComponent } from './credentials/credentials.component';
+import {SidebarComponent} from './sidebar/sidebar.component';
+import {HeaderComponent} from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CredentialsComponent } from './credentials/credentials.component';
     RegisterComponent,
     HomeComponent,
     GeneratorComponent,
-    CredentialsComponent
+    CredentialsComponent,
+    SidebarComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

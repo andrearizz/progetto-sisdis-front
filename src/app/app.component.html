@@ -5,7 +5,10 @@
   <div class="border-right bg-custom" id="sidebar-wrapper">
     <div class="sidebar-heading"><a routerLink="home"><img src="./images/logo_min.png" alt=""></a></div>
     <div class="list-group list-group-flush">
-      <a *ngIf="isLoggedIn" class="list-group-item list-group-item-action bg-list-custom" routerLink="/generator">Generator</a>
+      <div *ngIf="isLoggedIn">
+        <a class="list-group-item list-group-item-action bg-list-custom" routerLink="/credentials">Password</a>
+        <a class="list-group-item list-group-item-action bg-list-custom" routerLink="/generator">Generator</a>
+      </div>
     </div>
   </div>
   <!-- /#sidebar-wrapper -->
@@ -22,6 +25,9 @@
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0" *ngIf="!isLoggedIn">
           <li class="nav-item">
             <a class="nav-link bg-list-custom-nav" routerLink="home" >Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link bg-list-custom-nav" routerLink="/generator">Generator</a>
           </li>
           <li class="nav-item">
             <a class="nav-link bg-list-custom-nav" routerLink="login">Login</a>

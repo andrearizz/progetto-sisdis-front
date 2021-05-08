@@ -1,13 +1,13 @@
 body {
   overflow-x: hidden;
-  background-color: rgba(212, 226, 230, 1);
+  background-color: rgb(255, 255, 255);
 }
 
 img {
   max-width: 100%;
   height: auto;
   position: relative;
-  left: 40px;
+  left: 70px;
 }
 
 .bg-list-custom-nav {
@@ -16,23 +16,19 @@ img {
 }
 
 .bg-custom {
-  background: rgb(16,89,107);
-  background: -moz-linear-gradient(90deg, rgba(16,89,107,1) 0%, rgba(212, 226, 230, 0.42) 87%, rgba(212,226,230,1) 100%);
-  background: -webkit-linear-gradient(90deg, rgba(16,89,107,1) 0%, rgba(212,226,230,0.4248074229691877) 87%, rgba(212,226,230,1) 100%);
-  background: linear-gradient(90deg, rgba(16,89,107,1) 0%, rgba(212,226,230,0.4248074229691877) 87%, rgba(212,226,230,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#10596b",endColorstr="#d4e2e6",GradientType=1);
+  background-color: rgba(212, 226, 230, 1);
 }
 
 .bg-list-custom {
-  background: rgba(16, 89, 107, 0.15);
+  background: rgba(16, 89, 107, 0);
   font-family: Montserrat, serif;
-  font-size: 24px;
-  font-weight: 500;
-  color: #f8f8f8;
+  font-size: 22px;
+  font-weight: 400;
+  color: #10596b;
 }
 
 .bg-navbar-custom {
-  background: rgba(16, 89, 107, 0);
+  background: rgb(255, 255, 255);
   font-size: 18px;
   font-weight: 500;
 }

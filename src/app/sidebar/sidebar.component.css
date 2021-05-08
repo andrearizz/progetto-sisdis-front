@@ -1,0 +1,77 @@
+.side-nav-bar {
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.side-nav-bar-overlay {
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.side-nav-bar-menu-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: rgb(16,89,107);
+  background: -moz-linear-gradient(180deg, rgba(16,89,107,1) 0%, rgba(16,89,107,1) 18%, rgba(255,255,255,1) 18%);
+  background: -webkit-linear-gradient(180deg, rgba(16,89,107,1) 0%, rgba(16,89,107,1) 18%, rgba(255,255,255,1) 18%);
+  background: linear-gradient(180deg, rgba(16,89,107,1) 0%, rgba(16,89,107,1) 18%, rgba(255,255,255,1) 18%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#10596b",endColorstr="#ffffff",GradientType=1);
+  display: flex;
+  flex-direction: column;
+}
+
+.side-nav-bar-close {
+  display: inline-block;
+  font-size: 2.5em;
+  margin: 24px 0 0 24px;
+  cursor: pointer;
+}
+
+
+.side-nav-bar-content-container {
+  padding: 32px;
+}
+
+
+.side-nav-bar-overlay-collapsed {
+  background: transparent !important;
+}
+
+.side-nav-bar-collapsed {
+  visibility: collapse !important;
+}
+
+.button-delete {
+  position: relative;
+  left: 200px;
+  top: 100px;
+  width: 25%;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  background-color: rgba(212, 226, 230, 1);
+}
+
+.custom-close {
+  font-size: 70px;
+  color: black;
+  position: relative;
+  margin-top: 117px;
+}
+
+
