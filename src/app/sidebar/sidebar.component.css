@@ -18,9 +18,9 @@
   top: 0;
   bottom: 0;
   background: rgb(16,89,107);
-  background: -moz-linear-gradient(180deg, rgba(16,89,107,1) 0%, rgba(16,89,107,1) 18%, rgba(255,255,255,1) 18%);
-  background: -webkit-linear-gradient(180deg, rgba(16,89,107,1) 0%, rgba(16,89,107,1) 18%, rgba(255,255,255,1) 18%);
-  background: linear-gradient(180deg, rgba(16,89,107,1) 0%, rgba(16,89,107,1) 18%, rgba(255,255,255,1) 18%);
+  background: -moz-linear-gradient(180deg, rgba(16,89,107,1) 0%, rgba(16,89,107,1) 15%, rgba(255,255,255,1) 15%);
+  background: -webkit-linear-gradient(180deg, rgba(16,89,107,1) 0%, rgba(16,89,107,1) 15%, rgba(255,255,255,1) 15%);
+  background: linear-gradient(180deg, rgba(16,89,107,1) 0%, rgba(16,89,107,1) 15%, rgba(255,255,255,1) 15%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#10596b",endColorstr="#ffffff",GradientType=1);
   display: flex;
   flex-direction: column;

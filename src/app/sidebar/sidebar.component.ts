@@ -29,7 +29,6 @@ export class SidebarComponent implements OnInit {
 
   getSideBarStyle(showNav: boolean): any {
     const sideBarStyle: any = {};
-
     sideBarStyle.transition = this.direction + '' + this.duration + 's, visibility ' + this.duration + 's';
     sideBarStyle.width = this.navWidth + 'px';
     sideBarStyle[this.direction] = (showNav ? 0 : (this.navWidth * -1)) + 'px';

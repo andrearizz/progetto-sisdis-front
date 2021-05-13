@@ -13,6 +13,7 @@ import { GeneratorComponent } from './generator/generator.component';
 import { CredentialsComponent } from './credentials/credentials.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {HeaderComponent} from './header/header.component';
+import { SecureNotesComponent } from './secure-notes/secure-notes.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {HeaderComponent} from './header/header.component';
     CredentialsComponent,
     SidebarComponent,
     HeaderComponent,
+    SecureNotesComponent,
   ],
   imports: [
     BrowserModule,

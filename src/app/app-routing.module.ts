@@ -6,6 +6,7 @@ import {LoginComponent} from './login/login.component';
 import {GeneratorComponent} from './generator/generator.component';
 import {CredentialsComponent} from './credentials/credentials.component';
 import {AuthGuard} from './auth.guard';
+import {SecureNotesComponent} from './secure-notes/secure-notes.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'generator', component: GeneratorComponent},
+  {path: 'secure-notes', component: SecureNotesComponent},
   {path: 'credentials', component: CredentialsComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
