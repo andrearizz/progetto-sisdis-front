@@ -1,0 +1,9 @@
+<app-sidebar [sidenavtemplateRef]="navContent" [direction]="" [navWidth]="500" [duration]="0.5"></app-sidebar>
+
+<header>
+  <div class="header-menu">
+    <button type="button" (click)="toggleAddSideBar()" class="button-add">Add</button>
+  </div>
+</header>
+
+<ng-template #navContent></ng-template>
