@@ -19,7 +19,7 @@ export class CredentialsComponent implements OnInit {
   errorMessage = '';
 
   credentials = [];
-  form2 = {
+  form2: any = {
     id: '',
     title: '',
     loginName: '',
@@ -143,6 +143,7 @@ export class CredentialsComponent implements OnInit {
     if (!isModified) {
       return null;
     }
+
 
     this.savePwService.updateCredentials(this.form2.id, this.form2.titleEdited, this.isUrlModified,
       this.form2.loginNameEdited, this.isLoginModified, this.form2.passwordEdited, this.isPasswordModified)

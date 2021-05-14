@@ -6,4 +6,47 @@
   </div>
 </header>
 
-<ng-template #navContent></ng-template>
+<div class="container-fluid custom">
+
+  <ul class="list-group list-group-flush">
+    <h3>Click to see your notes</h3>
+    <li class="list-group-item" (click)="toggleEditSideBar(n)" *ngFor="let n of notes">
+      <h4>{{n.title}}</h4>
+    </li>
+  </ul>
+
+</div>
+
+
+<ng-template #navContent>
+  <div *ngIf="ifAdd">
+    <form (ngSubmit)="f.form.valid && onSubmit()" #f='ngForm' novalidate>
+     <div>
+        <input type="text" class="form-input" [(ngModel)]="form.title" name="title" placeholder="Add a title...">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control bg-cust" [(ngModel)]="form.content" name="content" id="exampleFormControlTextarea1" rows="10"
+        placeholder="Add note..."></textarea>
+      </div>
+      <div class="form-group">
+        <input type="submit" name="submit" id="submit" class="button-submit" value="Save"/>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="!ifAdd">
+    <form (ngSubmit)="f.form.valid" #f='ngForm' novalidate>
+      <div>
+        <input type="text" class="form-input" [(ngModel)]="form2.titleEdited" name="titleEdited" placeholder="Add a title...">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control bg-cust" [(ngModel)]="form2.contentEdited" name="contentEdited" rows="10"
+                  placeholder="Add note..."></textarea>
+      </div>
+      <div class="form-group ml-buttons">
+        <input type="submit" name="submit" id="delete" class="button-submit-cust" (click)="onDelete()" value="Delete"/>
+        <input type="submit" name="submit" id="edit" class="button-submit-cust" (click)="onEdit()" value="Edit"/>
+      </div>
+    </form>
+  </div>
+</ng-template>

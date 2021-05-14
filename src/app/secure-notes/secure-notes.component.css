@@ -1,0 +1,110 @@
+.button-add {
+  position: relative;
+  margin-top: 12px;
+  width: 10%;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  background-color: #10596b;
+}
+
+.form-input {
+  position: relative;
+  background: #10596b;
+  border: 1px solid #10596b;
+  width: 100%;
+  padding: 20px 30px;
+  line-height: 1.66;
+  font-weight: 900;
+  color: #ffffff;
+  font-family: 'Montserrat', serif;
+  font-size: 30px;
+  text-align: center;
+  bottom: 20px;
+
+}
+
+.form-input::-webkit-input-placeholder {
+  font-weight: 500; }
+.form-input:focus::-webkit-input-placeholder {
+  color: rgba(255, 252, 252, 0); }
+
+.bg-cust {
+  position: relative;
+  top: 25px;
+  background: #faf7f4;
+}
+
+
+.button-submit {
+  position: relative;
+  margin-top: 40px;
+  left: 150px;
+  width: 30%;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  background-color: #10596b;
+}
+
+h3 {
+  line-height: 1.66;
+  font-weight: 900;
+  color: #000000;
+  font-family: 'Montserrat', serif;
+  font-size: 30px;
+}
+h4 {
+  line-height: 1.66;
+  font-weight: 900;
+  color: #10596b;
+  font-family: 'Montserrat', serif;
+  font-size: 24px;
+}
+
+.custom {
+  margin-top: 40px;
+
+}
+.button-submit-cust {
+  position: relative;
+  display: inline-block;
+  margin-left: 30px;
+  margin-top: 20px;
+  width: 30%;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  background-color: #10596b;
+}
+
+.ml-buttons {
+  margin-left: 60px;
+}
