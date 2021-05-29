@@ -1,0 +1,71 @@
+<app-sidebar [sidenavtemplateRef]="navContent" [direction]="" [navWidth]="500" [duration]="0.5"></app-sidebar>
+
+
+<header>
+  <div class="header-menu">
+    <button type="button" (click)="toggleAddSideBar()" class="button-add">New Group</button>
+    <button type="button" (click)="toggleJoinSideBar()" class="button-add">Join</button>
+  </div>
+</header>
+
+<div class="container-fluid custom">
+  <ul class="list-group list-group-flush">
+    <h3>Click to see your groups</h3>
+    <li class="list-group-item" *ngFor="let g of groups" >
+      <h4 (click)="onClick(g)" >{{g.name}}</h4>
+      <h5>Created by {{g.creatorName}} on {{g.day}} at {{g.hours}}</h5>
+      <h5>Join code: {{g.code}}</h5>
+    </li>
+  </ul>
+</div>
+
+
+
+
+<ng-template #navContent>
+  <div *ngIf="ifCreate">
+    <div>
+      <h1>New Group</h1>
+    </div>
+    <div class="main">
+      <section class="signup">
+        <div class="container">
+          <div class="signup-content">
+            <form class="signup-form" (ngSubmit)="f.form.valid && onCreate()" #f='ngForm' novalidate id="submit-form">
+              <div class="form-group">
+                <p>Group Name</p>
+                <input type="text" class="form-input" [(ngModel)]="groupForm.name" name="name" #name='ngModel' required placeholder="Groups Name">
+              </div>
+                <input type="submit" name="submit" id="submit" class="button-submit" value="Create"/>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div *ngIf="!ifCreate">
+    <div>
+      <h1>Join a Group</h1>
+    </div>
+    <div class="main">
+      <section class="signup">
+        <div class="container">
+          <div class="signup-content">
+            <form class="signup-form" (ngSubmit)="f.form.valid && onJoin()" *ngIf="!isJoinFailed" #f='ngForm' novalidate id="join-form">
+              <div class="form-group">
+                <p>Join Code</p>
+                <input type="text" class="form-input" [(ngModel)]="joinForm.code" name="name" #name='ngModel' required placeholder="Join Code">
+              </div>
+              <input type="submit" name="submit" id="join" class="button-submit" value="Join"/>
+            </form>
+          </div>
+        </div>
+      </section>
+      <div class="alert alert-warning" *ngIf="isJoinFailed">
+        {{errorMessage}}
+      </div>
+    </div>
+  </div>
+
+</ng-template>

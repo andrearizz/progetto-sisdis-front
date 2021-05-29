@@ -7,6 +7,8 @@ import {GeneratorComponent} from './generator/generator.component';
 import {CredentialsComponent} from './credentials/credentials.component';
 import {AuthGuard} from './auth.guard';
 import {SecureNotesComponent} from './secure-notes/secure-notes.component';
+import {GroupsComponent} from './groups/groups.component';
+import {SingleGroupComponent} from './single-group/single-group.component';
 
 
 const routes: Routes = [
@@ -14,9 +16,11 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'generator', component: GeneratorComponent},
-  {path: 'secure-notes', component: SecureNotesComponent},
+  {path: 'secure-notes', component: SecureNotesComponent, canActivate: [AuthGuard]},
   {path: 'credentials', component: CredentialsComponent, canActivate: [AuthGuard]},
-  {path: '', redirectTo: 'home', pathMatch: 'full'}
+  {path: 'groups', component: GroupsComponent, canActivate: [AuthGuard]},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'single-group', component: SingleGroupComponent, canActivate: [AuthGuard]}
 ];
 
 

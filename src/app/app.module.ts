@@ -14,6 +14,8 @@ import { CredentialsComponent } from './credentials/credentials.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
 import {HeaderComponent} from './header/header.component';
 import { SecureNotesComponent } from './secure-notes/secure-notes.component';
+import { GroupsComponent } from './groups/groups.component';
+import { SingleGroupComponent } from './single-group/single-group.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { SecureNotesComponent } from './secure-notes/secure-notes.component';
     SidebarComponent,
     HeaderComponent,
     SecureNotesComponent,
+    GroupsComponent,
+    SingleGroupComponent,
   ],
   imports: [
     BrowserModule,

@@ -34,7 +34,7 @@ export class SaveNotesService {
   }
 
   updateNote(id: string, title: string, isTitleModified: boolean, content: string, isContentModified: boolean): Observable<any> {
-    return this.http.post(SAVE_API + '/editNote', {
+    return this.http.put(SAVE_API + '/editNote', {
       id,
       title,
       isTitleModified,

@@ -265,6 +265,8 @@ p {
 
 }
 
+
+
 .button-submit-cust {
   position: relative;
   display: inline-block;
@@ -303,8 +305,9 @@ p {
 
 .button-add {
   position: relative;
-  margin-top: 12px;
+  display: inline-block;
   margin-left: 30px;
+  margin-top: 12px;
   width: 10%;
   border-radius: 5px;
   -moz-border-radius: 5px;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SavepwService} from '../_services/savepw.service';
 import {SidebarService} from '../_services/sidebar.service';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-credentials',
@@ -37,10 +38,13 @@ export class CredentialsComponent implements OnInit {
   isPasswordModified = false;
   isUrlModified = false;
   isLoginModified = false;
+  roles: string[] = [];
 
-  constructor(private savePwService: SavepwService, private sideBarService: SidebarService) { }
+  constructor(private savePwService: SavepwService, private sideBarService: SidebarService,
+              private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.roles = this.tokenStorage.getUser().roles;
     this.savePwService.getAllPassword().subscribe(data => {
       this.credentials = data.credentials;
     });
@@ -75,6 +79,13 @@ export class CredentialsComponent implements OnInit {
     this.form2.titleEdited = credential.url;
     this.form2.loginName = credential.login;
     this.form2.loginNameEdited = credential.login;
+    this.savePwService.getPw(this.form2.title, this.form2.loginName).subscribe( data => {
+        this.form2.password = data.message;
+        this.form2.passwordEdited = this.form2.password;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+      });
     this.sideBarService.setShowNav(true);
     console.log(this.form2.title);
   }
@@ -106,22 +117,12 @@ export class CredentialsComponent implements OnInit {
   }
 
   onShow(): void {
-    this.savePwService.getPw(this.form2.title, this.form2.loginName).subscribe( data => {
-      this.isShow = true;
-      this.form2.password = data.message;
-      this.form2.passwordEdited = this.form2.password;
-    },
-        err => {
-        this.errorMessage = err.error.message;
-      });
+    this.isShow = true;
 
   }
 
   onHide(): void {
     this.isShow = false;
-    this.form2.password = null;
-    this.form2.passwordEdited = null;
-    this.isPasswordModified = false;
   }
 
   onEdit(): void {

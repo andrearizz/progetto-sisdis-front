@@ -46,7 +46,7 @@ export class SavepwService {
                     password: string, isPasswordModified): Observable<any> {
     console.log(isUrlModified);
 
-    return this.http.post(SAVE_API + '/edit', {
+    return this.http.put(SAVE_API + '/edit', {
       id,
       url,
       isUrlModified,

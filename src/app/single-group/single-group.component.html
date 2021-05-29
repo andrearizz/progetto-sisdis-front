@@ -1,0 +1,209 @@
+<app-sidebar [sidenavtemplateRef]="navContent" [direction]="" [navWidth]="500" [duration]="0.5"></app-sidebar>
+
+<header>
+  <div class="header-menu">
+    <div class="row">
+      <div class="col-sm-9">
+        <h2 (click)="onGroup()">{{name}}</h2>
+      </div>
+      <div class="col-sm-3">
+        <button type="button" (click)="onCredentials()" class="button-credential">Credentials</button>
+        <button type="button" (click)="onNotes()" class="button-notes">Notes</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid custom" *ngIf="ifDashBoard">
+  <h3>Group members</h3>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" (click)="toggleViewUser(m)" *ngFor="let m of members">
+      <h4>{{m.username}}</h4>
+      <h5>Role: {{m.role.split('_').pop()}}</h5>
+    </li>
+  </ul>
+</div>
+
+<div class="container-fluid custom" *ngIf="isCredentials && !ifDashBoard">
+  <button type="button" (click)="toggleAddCredentialSideBar()" class="button-add">Add</button>
+  <h3>Click to see group's Passwords</h3>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" (click)="toggleEditSideBar(c)" *ngFor="let c of credentials">
+      <h4>{{c.url.split("://").pop()}}</h4>
+      <h5>{{c.login}}</h5>
+      <h5>Created on {{c.dayCreation}} at {{c.hoursCreation}} by {{c.creator}}</h5>
+      <h5>Last change on {{c.dayLastModify}} at {{c.hoursLastModify}} by {{c.lastChanger}}</h5>
+    </li>
+  </ul>
+</div>
+
+
+<div class="container-fluid custom" *ngIf="isNotes && !ifDashBoard">
+  <button type="button" (click)="toggleAddSecureNotesSideBar()" class="button-add">Add</button>
+  <h3>Click to see group's Secure Notes</h3>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" (click)="toggleEditNotesSideBar(n)" *ngFor="let n of notes">
+      <h4>{{n.title}}</h4>
+      <h5>Created on {{n.dayCreation}} at {{n.hoursCreation}} by {{n.creator}}</h5>
+      <h5>Last change on {{n.dayLastModify}} at {{n.hoursLastModify}} by {{n.lastChanger}}</h5>
+    </li>
+  </ul>
+</div>
+
+
+
+<ng-template #navContent>
+
+  <div *ngIf="isNotes && ifNotesAdd">
+    <form (ngSubmit)="f.form.valid" #f='ngForm' *ngIf="!ifUnauthorized" novalidate>
+      <div>
+        <input type="text" class="form-input-note" [(ngModel)]="formNotes.title" name="title" placeholder="Add a title...">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control bg-mine" [(ngModel)]="formNotes.content" name="content" id="exampleFormControlTextarea1" rows="10"
+                  placeholder="Add note..."></textarea>
+      </div>
+      <div class="form-group">
+        <input type="submit" name="submit-note" id="note-submit" (click)="onNoteSubmit()" class="button-submit-note" value="Save"/>
+      </div>
+    </form>
+    <div class="alert alert-warning war-cust" *ngIf="ifUnauthorized">
+      You have not got the permission to edit, please contact the group admin.
+    </div>
+  </div>
+
+  <div *ngIf="isNotes && ifNotesEdit">
+    <div class="main">
+        <form (ngSubmit)="f.form.valid" #f='ngForm' *ngIf="!ifPrecondition || !ifUnauthorized" novalidate>
+          <div>
+            <input type="text" class="form-input-note" [(ngModel)]="formNotesEdit.titleEdited" name="titleEdited" placeholder="Add a title...">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control bg-mine" [(ngModel)]="formNotesEdit.contentEdited" name="contentEdited" rows="10"
+                  placeholder="Add note..."></textarea>
+            </div>
+            <div class="form-group ml-buttons">
+              <input type="submit" name="submit" id="delete-note" class="button-submit-cust" (click)="onNoteDelete()" value="Delete"/>
+              <input type="submit" name="submit" id="edit-note" class="button-submit-cust" (click)="onNoteEdit()" value="Edit"/>
+            </div>
+        </form>
+      <div class="alert alert-warning war-cust" *ngIf="ifPrecondition">
+        Someone has just changed these credentials! Please reload to see these changes
+        <a routerLink="/single-group" (click)="onReload()">Reload</a>
+      </div>
+      <div class="alert alert-warning" *ngIf="ifUnauthorized">
+        You have not got the permission to edit, please contact the group admin.
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="ifCredentialAdd && isCredentials">
+    <div>
+      <h1>Add a password</h1>
+    </div>
+    <div class="main">
+      <section class="signup">
+        <div class="container">
+          <div class="signup-content">
+            <form class="signup-form" (ngSubmit)="f.form.valid && onCredentialSubmit()" *ngIf="!ifUnauthorized" #f='ngForm' novalidate id="submit-form-credential">
+              <div class="form-group">
+                <p>URL Site</p>
+                <input type="text" class="form-input" [(ngModel)]="formCredential.url" name="url" #url='ngModel' required placeholder="URL">
+              </div>
+              <div class="form-group">
+                <p>Login</p>
+                <input type="text" class="form-input" [(ngModel)]="formCredential.login" name="login" #login='ngModel' required placeholder="Login Data">
+              </div>
+              <div class="form-group">
+                <p>Password</p>
+                <input type="text" class="form-input" [(ngModel)]="formCredential.password" name="password" #password='ngModel' placeholder="Password">
+              </div>
+              <div class="form-group">
+                <input type="submit" name="submit" id="submitt" class="button-submit" value="Save"/>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <div class="alert alert-warning war-cust" *ngIf="ifUnauthorized">
+        You have not got the permission to add, please contact the group admin.
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="ifCredentialEdit && isCredentials">
+    <div>
+    </div>
+    <h1>{{formCredentialEdit.url.split("://").pop()}}</h1>
+    <div class="main">
+      <section class="signup">
+        <div class="container">
+          <div class="signup-content">
+            <form class="signup-form" (ngSubmit)="f.form.valid" *ngIf="!ifPrecondition || !ifUnauthorized" #f='ngForm' novalidate id="edit-form">
+              <div class="form-group">
+                <p>URL Site</p>
+                <input type="text" class="form-input" [(ngModel)]="formCredentialEdit.urlEdited" name="url" #url='ngModel' required>
+              </div>
+              <div class="form-group">
+                <p>Login</p>
+                <input type="text" class="form-input" [(ngModel)]="formCredentialEdit.loginEdited" name="login" #login='ngModel' required>
+              </div>
+              <div class="form-group" *ngIf="!isShowCredential" >
+                <p>Password<input type="button" name="showPw" id="showPw" class="button-show" (click)="onShow()" value="Show"></p>
+                <input type="password" class="form-input" [(ngModel)]="formCredentialEdit.passwordEdited" name="password" #password='ngModel' readonly value="hidden">
+              </div>
+
+              <div class="form-group" *ngIf="isShowCredential">
+                <p>Password<input type="button" name="showPw" id="hide" (click)="onHide()" class="button-show" value="hide"></p>
+                <input type="text" class="form-input" [(ngModel)]="formCredentialEdit.passwordEdited" name="password" #password='ngModel'>
+              </div>
+
+              <div class="form-group">
+                <input type="submit" name="edit" id="delete" (click)="onDelete()" class="button-submit-cust" value="Delete"/>
+                <input type="submit" name="edit" id="edit" (click)="onEdit()" class="button-submit-cust" value="Edit">
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <div class="alert alert-warning" *ngIf="ifPrecondition">
+        Someone has just changed these credentials! Please reload to see these changes
+        <a routerLink="/single-group" (click)="onReload()">Reload</a>
+      </div>
+      <div class="alert alert-warning war-cust-cred" *ngIf="ifUnauthorized">
+        You have not got the permission to edit, please contact the group admin.
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="ifMember">
+    <div>
+    </div>
+    <h1>{{memberForm.username}}</h1>
+    <div class="main">
+      <section class="signup">
+        <div class="container">
+          <div class="signup-content">
+            <form class="signup-form" (ngSubmit)="f.form.valid" #f='ngForm' novalidate id="member-form">
+              <div class="form-group">
+                <p>Username</p>
+                <input type="text" class="form-input" [(ngModel)]="memberForm.username" name="username" #username='ngModel' required readonly>
+              </div>
+              <div class="form-group">
+                <p>Role</p>
+                <input type="text" *ngIf="role === 'ROLE_GROUP_ADMIN'" class="form-input" [(ngModel)]="memberForm.role" name="role" #role='ngModel' required>
+                <input type="text" *ngIf="role !== 'ROLE_GROUP_ADMIN'" class="form-input" [(ngModel)]="memberForm.role" name="role" #role='ngModel' required disabled>
+              </div>
+              <div class="form-group">
+                <input type="submit" *ngIf="role === 'ROLE_GROUP_ADMIN'" name="edit" id="changeRole" (click)="onChangeRole()" class="button-permission-cust" value="Edit">
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</ng-template>
